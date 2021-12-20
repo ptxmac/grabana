@@ -416,3 +416,17 @@ func FieldOverride(m fields.Matcher, opts ...fields.OverrideOption) Option {
 		return nil
 	}
 }
+
+func FieldOverride(m fields.Matcher, opts ...fields.OverrideOption) Option {
+	return func(timeseries *TimeSeries) {
+		override := sdk.FieldConfigOverride{}
+
+		m(&override)
+
+		for _, opt := range opts {
+			opt(&override)
+		}
+
+		timeseries.Builder.TimeseriesPanel.FieldConfig.Overrides = append(timeseries.Builder.TimeseriesPanel.FieldConfig.Overrides, override)
+	}
+}

@@ -11,3 +11,6 @@ require (
 	github.com/stretchr/testify v1.7.0
 	gopkg.in/yaml.v3 v3.0.0
 )
+
+replace github.com/K-Phoen/sdk => github.com/ptxmac/sdk v0.8.2-0.20220723103620-cf21ff0bdcac
+

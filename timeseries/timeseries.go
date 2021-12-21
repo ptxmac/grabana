@@ -167,6 +167,15 @@ func DataSource(source string) Option {
 	}
 }
 
+// DisplayName sets the default display name for the series
+func DisplayName(name string) Option {
+	return func(timeseries *TimeSeries) error {
+		timeseries.Builder.TimeseriesPanel.FieldConfig.Defaults.DisplayName = name
+
+		return nil
+	}
+}
+
 // Tooltip configures the tooltip content.
 func Tooltip(mode TooltipMode) Option {
 	return func(timeseries *TimeSeries) error {
